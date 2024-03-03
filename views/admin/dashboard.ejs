@@ -1,0 +1,266 @@
+
+        <%- include('../layouts/adminheader') %>
+
+
+
+            <section class="content-main">
+                <div class="content-header">
+                    <div>
+                        <h2 class="content-title card-title">Dashboard </h2>
+                        <p>Whole data about your business here</p>
+                    </div>
+                    <div>
+                        <a href="/admin/salesReport" class="btn btn-primary"><i
+                                class="text-muted material-icons md-post_add"></i>Create report</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-primary-light"><i
+                                        class="text-primary material-icons md-monetization_on"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Revenue</h6>
+                                    <span>$<%= totalRevenue %></span>
+                                    <span class="text-sm">
+                                        Total Revenue.
+                                    </span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-success-light"><i
+                                        class="text-success material-icons md-local_shipping"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Orders</h6> <span>
+                                        <%= totalOrders %>
+                                    </span>
+                                    <span class="text-sm">
+                                        Total number of orders.
+                                    </span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-info-light"><i
+                                        class="text-info material-icons md-shopping_basket"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Products</h6> <span>
+                                        <%= totalProducts %>
+                                    </span>
+                                    <span class="text-sm">
+                                        In <%= totalCategories %> Categories
+                                    </span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-info-light"><i
+                                        class="text-info material-icons md-shopping_basket"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Monthly earning</h6> <span>$&nbsp; <%= monthlyEarnings
+                                            %></span>
+                                    <span class="text-sm">
+                                        Total monthly earning.
+                                    </span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-info-light"><i
+                                        class="text-info material-icons md-person"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Total Active Users</h6> <span>&nbsp; <%= totalUsers %>
+                                            </span>
+                                    <span class="text-sm">
+                                        All the active users.
+                                    </span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-warning-light"><i
+                                        class="text-warning material-icons md-qr_code"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Total Categories</h6> <span>&nbsp; <%= totalCategories
+                                            %></span>
+                                    <span class="text-sm">
+
+                                    </span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card mb-4">
+                                <article class="card-body">
+                                    <h5 class="card-title">New Members</h5>
+                                    <div class="new-member-list">
+
+                                        <% newUsers.forEach((user)=> { %>
+
+                                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="<%= user.image %>" alt="" class="avatar">
+                                                    <div>
+                                                        <h6>
+                                                            <%= user.name %>
+                                                        </h6>
+                                                        <p class="text-muted font-xs">
+                                                            Sanfrancisco
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <span class="badge badge-pill badge-soft-success">Active</span>
+                                            </div>
+                                            <% }); %>
+
+
+
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-8">
+                        <header class="card-header">
+                            <h4 class="card-title">Latest orders</h4>
+                        </header>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="table-responsive">
+                                    <!-- <table class="table align-middle table-nowrap mb-0"> -->
+                                    <table id="products" class="table align-middle table-nowrap mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Order Id</th>
+                                                <th scope="col">Billing Name</th>
+                                                <th scope="col">Ordered Date</th>
+                                                <th scope="col">Delivery Date</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Payment Status</th>
+                                                <th scope="col">Payment Method</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+    
+                                            <% Orders.forEach((order)=> { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= order._id %>
+                                                    </td>
+                                                    <td>
+                                                        <%= order.user.name %>
+                                                    </td>
+                                                    <td>
+                                                        <%= new Date(order.orderDate).toLocaleDateString() %>
+                                                    </td>
+                                                    <td>
+                                                        <%= new Date(order.deliveryDate).toLocaleDateString() %>
+                                                    </td>
+                                                    <td>
+                                                        <%= order.totalAmount %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (order.status=='Pending' ) { %>
+                                                            <span class="badge badge-pill badge-soft-warning">
+                                                                <%= order.status %>
+                                                            </span>
+                                                            <% } else if (order.status=='Order Confirmed' ) { %>
+                                                                <span class="badge badge-pill badge-soft-warning">
+                                                                    <%= order.status %>
+                                                                </span>
+                                                                <% } else if (order.status=='Shipped' ) { %>
+                                                                    <span class="badge badge-pill badge-soft-dark">
+                                                                        <%= order.status %>
+                                                                    </span>
+                                                                    <% } else if (order.status=='Out For Delivery' ) { %>
+                                                                        <span class="badge badge-pill badge-soft-dark">
+                                                                            <%= order.status %>
+                                                                        </span>
+                                                                        <% } else if (order.status=='Delivered' ) { %>
+                                                                            <span
+                                                                                class="badge badge-pill badge-soft-success">
+                                                                                <%= order.status %>
+                                                                            </span>
+                                                                            <% } else if (order.status=='Return Successfull'
+                                                                                ) { %>
+                                                                                <span
+                                                                                    class="badge badge-pill badge-soft-success">
+                                                                                    <%= order.status %>
+                                                                                </span>
+                                                                                <% } else { %>
+                                                                                    <span
+                                                                                        class="badge badge-pill badge-soft-danger">
+                                                                                        <%= order.status %>
+                                                                                    </span>
+                                                                                    <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (order.paymentStatus=='Pending' ) { %>
+                                                            <span class="badge badge-pill badge-soft-warning">
+                                                                <%= order.paymentStatus %>
+                                                            </span>
+                                                            <% } else if (order.paymentStatus=='Payment Successful' ) { %>
+                                                                <span class="badge badge-pill badge-soft-success">
+                                                                    <%= order.paymentStatus %>
+                                                                </span>
+                                                                <% } else if (order.paymentStatus=='Refunded' ) { %>
+                                                                    <span class="badge badge-pill badge-soft-primary">
+                                                                        <%= order.paymentStatus %>
+                                                                    </span>
+                                                                    <% } else{ %>
+                                                                        <span class="badge badge-pill badge-soft-danger">
+                                                                            <%= order.paymentStatus %>
+                                                                        </span>
+                                                                        <% } %>
+                                                    </td>
+    
+    
+                                                    <td>
+                                                        <%= order.paymentMethod %>
+                                                    </td>
+    
+    
+                                                </tr>
+                                                <% }); %>
+    
+    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> <!-- table-responsive end// -->
+                        </div>
+                    </div>
+                </div>
+                
+
+            </section> <!-- content-main end// -->
+
+
+            <%- include('../layouts/adminfooter.ejs') %>

@@ -1,0 +1,96 @@
+
+<%- include("../layouts/adminheader") %>
+
+<body>
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Banner List</h2>
+            </div>
+            <div>
+                <a href="/admin/addbannerlist" class="btn btn-primary"><i class="material-icons md-plus"></i> Create new</a>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" width="10%">Image</th>
+                                        <th class="text-center" width="25%">Title</th>
+                                        <th class="text-center" width="25%">Subtitle</th>
+                                        <th class="text-center" width="15%">Status</th>
+                                        <th class="text-center" width="15%">Action</th>
+                                    </tr>
+                                </thead>
+    
+                                <tbody>r
+                                    
+                                    <% if (banner.length > 0) {
+                                        for (let i = 0; i < banner.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <a class="itemside" href="#">
+                                                <div class="left">
+                                                    <img src="/bannerImages/<%=banner[i].image%>" class="img-sm img-thumbnail"
+                                                        alt="Item">
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <%= banner[i].title %>
+                                        </td>
+                                        <td>
+                                            <%= banner[i].subtitle %>
+                                        </td>
+                                        <td>
+                                            <%= banner[i].Description %>
+                                        </td>
+                                        <td>
+                                            <% if ( banner[i].isListed==true) { %>
+                                                <span class="badge rounded-pill"
+                                                    style="background-color: green;">listed</span>
+                                                <% } else { %>
+                                                    <span class="badge rounded-pill"
+                                                        style="background-color: red;">unlisted</span>
+                                                    <% } %>
+                                        </td>
+                                        <td class="text-end">
+    <div class="dropdown">
+        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm">
+            <i class="material-icons md-more_horiz"></i>
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/admin/editbanner?id=<%= banner[i]._id %>">Edit</a>
+            <% if (banner[i].isListed) { %>
+                <a class="dropdown-item text-danger" href="/admin/listbanner?id=<%= banner[i]._id %>">Unlist</a>
+            <% } else { %>
+                <a class="dropdown-item text-success" href="/admin/listbanner?id=<%= banner[i]._id %>">List</a>
+            <% } %>
+        </div>
+    </div>
+</td>
+                                    </tr>
+                                    <% }} %>
+                                </tbody>
+    
+                            </table>
+                        </div>
+                    </div> <!-- .col// -->
+                </div> <!-- .row // -->
+            </div> <!-- card body .// -->
+        </div> <!-- card .// -->
+    </section> <!-- content-main end// -->
+    
+        
+    </main>  
+</body>
+
+<%- include("../layouts/adminfooter") %>
+
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333333;
+    }
+
+    input {
+      padding: 12px;
+      margin: 10px;
+      border: 1px solid #cccccc;  
+      border-radius: 4px;
+      width: 200px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 20px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <title>Modern OTP Page</title>
+</head>
+<body>
+  <div class="container">
+
+    <h2>Enter OTP</h2>
+
+    <form action="/validate" method="post">
+    <input type="number" id="otpInput" name="otp" placeholder="Enter OTP">
+    <button type="submit">Submit</button>
+    </form>
+
+  </div>
+</body>
+</html>

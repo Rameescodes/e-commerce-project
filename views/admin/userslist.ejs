@@ -1,0 +1,101 @@
+
+<%- include('../layouts/adminheader.ejs') %>
+
+        <section class="content-main">
+            <div class="content-header">
+                <h2 class="content-title">Users list</h2>
+               
+            </div>
+            <div class="card mb-4">
+                
+                <div class="card-body">
+                    <div class="table-responsive">
+                    
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th class="text-end"> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (userData.length> 0) {
+                                    for (let i = 0; i < userData.length; i++) { %>
+                                    <tr>
+                                        <td width="40%">
+                                                    <a href="#" class="itemside">
+                                                       
+                                                        <div class="info pl-3">
+                                                            <h6 class="mb-0 title">
+                                                                <%= userData[i].name %>
+                                                            </h6>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                       
+                                                <td>
+                                                    <%= userData[i].email %>
+                                                </td>
+                                        <td>
+                                            
+                                            <% if ( userData[i].is_blocked==1) { %>
+                                                <span class="badge rounded-pill"
+                                                    style="background-color: green;">unblock</span>
+                                                <% } else { %>
+                                                    <span class="badge rounded-pill"
+                                                        style="background-color: red;">block</span>
+                                                    <% } %>
+                                        </td>   
+                                        <td class="text-end">   
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown"
+                                                    class="btn btn-light rounded btn-sm font-sm"> <i
+                                                        class="material-icons md-more_horiz"></i> </a>  
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                    <% if (userData[i].is_blocked==1) { %>
+                                                        <a class="dropdown-item text-danger"
+                                                            href="/admin/unblockUser?id=<%= userData[i]._id %>">
+                                                             block </a>
+                                                        <% } else { %>
+                                                            <a class="dropdown-item text-success"
+                                                                href="/admin/blockUser?id=<%= userData[i]._id %>">
+                                                                unblock</a>
+                                                            <% }%>
+                                                </div>  
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% } } %>
+
+                        </tbody>
+                               
+                          
+                            
+                        </table> <!-- table-responsive.// -->
+                    </div>
+                </div> <!-- card-body end// -->
+            </div> <!-- card end// -->
+            <div class="pagination-area mt-15 mb-50">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-start">
+                        <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                        <li class="page-item"><a class="page-link" href="#">02</a></li>
+                        <li class="page-item"><a class="page-link" href="#">03</a></li>
+                        <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#">16</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section> <!-- content-main end// -->
+       
+    </main>
+    
+</body>
+
+
+<%- include('../layouts/adminfooter.ejs') %>
+

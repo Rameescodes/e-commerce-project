@@ -1,0 +1,127 @@
+<%- include('../layouts/header') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+
+<main class="main">
+    <section class="mt-50 mb-50">
+        <% if (!cartData) { %>
+            <!-- ... (existing code) ... -->
+        <% } else { %>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table shopping-summery text-center clean">
+                            <thead>
+                                <tr class="main-heading">
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i = 0; i < cartData.item.length; i++) { %>
+                                    <tr>
+                                        <td class="image product-thumbnail">
+                                            <% if (cartData.item[i].product && cartData.item[i].product.image) { %>
+                                                <img src="/productImages/<%= cartData.item[i].product.image %>" alt="#">
+                                            <% } else { %>
+                                                <!-- Provide a fallback image or handle the case where the product or image is not available -->
+                                            <% } %>
+                                        </td>
+                                        <td class="image product-thumbnail">
+                                            <% if (cartData.item[i].product && cartData.item[i].product.name) { %>
+                                                <p><%= cartData.item[i].product.name %></p>
+                                            <% } else { %>
+                                            <% } %>
+                                        </td>
+                                        
+                                        <td class="image product-thumbnail">
+                                            <% if (cartData.item[i].product && cartData.item[i].product.price) { %>
+                                                <%= cartData.item[i].product.price %>
+                                            <% } else { %>
+                                                <!-- Provide a fallback value or handle the case where the product or price is not available -->
+                                            <% } %>
+                                        </td>
+                                        
+                                        <td class="image product-thumbnail">
+                                            <% if (cartData.item[i].product && cartData.item[i].product.quantity) { %>
+                                                <!-- Display the quantity -->
+                                                <%= cartData.item[i].product.quantity %>
+                                            <% } else { %>
+                                                
+                                            <% } %>
+                                        </td>
+                                     
+                                        <td class="action" data-title="Remove">
+                                            <a href="/removeCart?productId=<%= cartData.item[i]._id %>">
+                                                <i class="fi-rs-trash"></i>
+                                            </a>
+                                        </td>
+                                      
+                                <% } %>
+                                <tr>
+                                    <td colspan="6" class="text-end">
+                                        <a href="/clearCart" class="text-muted btn btn-outline-light" style="background-color: lightblue;">
+                                            <i class="fi-rs-cross-small"></i> Clear Cart
+                                        </a>
+                                    </td>
+                                    
+                                    
+                                    
+                                    
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row mb-50">
+                                        <div class="col-lg-6 col-md-12">
+                                        </div>
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="border p-md-4 p-30 border-radius cart-totals">
+                                                <div class="heading_s1 mb-3">
+                                                    <h4>Cart Totals</h4>
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>    
+                                                                <td class="cart_total_label">Total</td>
+                                                                <td class="cart_total_amount"><strong><span
+                                                                            class="font-xl fw-900 text-brand"
+                                                                            id="totalAmount">
+                                                                            <%= producttotal %>
+                                                                        </span></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <% if (outofstockerror==true) { %>
+                                                    <label style="color: red;">Some products in cart are Out
+                                                        of Stock</label>
+
+                                                    <button class="btn btn-block btn-outline-primary-2 disabled"
+                                                        disabled>PROCEED TO CHECKOUT</button>
+
+                                                    <% } else { %>
+                                                        <label style="visibility: hidden;">Some products in
+                                                            cart are Out of Stock</label>
+                                                        <a href="/checkoutPage"
+                                                            class="btn btn-outline-primary-2 btn-order btn-block">PROCEED
+                                                            TO CHECKOUT</a>
+                                                        <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                    <!-- ... (remaining code) ... -->
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </section>
+</main>
+
+<%- include('../layouts/footer') %>

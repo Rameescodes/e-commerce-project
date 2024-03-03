@@ -1,0 +1,105 @@
+<%- include ('../layouts/adminheader.ejs') %>
+
+            <section class="content-main">
+                <div class="content-header">
+                    <div>
+                        <h2 class="content-title card-title">Products</h2>
+                        <p>Add, edit or delete a product</p>
+                    </div>
+                    <div>       
+                        <a href="/admin/addproductlist" class="btn btn-primary btn-sm rounded">Create</a>
+                    </div>
+                </div>
+                <div class="card mb-4"> 
+                   
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="15%">Image</th>
+                                        <th width="20%">Name</th>
+                                        <th width="30%">Category</th>
+                                        <th width="20%">Quantity</th>
+                                        <th>Status</th>
+                                        <th class="text-end"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let i=0; i < productData.length; i++) { %>
+                                        <tr>
+                                            <td>
+                                                <div class="left">
+                                                    <img src="productImages/<%=productData[i].image%>"
+                                                        class="img-sm" alt="catpic">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6 class="mb-0 title">
+                                                        <%= productData[i].name %>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6>
+                                                        <%= productData[i].category.category %>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6>
+                                                        <%= productData[i].quantity %>                      
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <% if(productData[i].isListed==true ) {%>
+                                                <span class = "badge rounded-pill"
+                                                 style="background-color: green">listed</span>
+                                                <%} else {%>
+                                                <span class="badge rounded-pill"
+                                                style="background-color: red;">unlisted</span>
+                                                <%} %>
+                                            </td>
+                                            
+                                            <td class="text-end">
+                                                <div class="dropdown">
+                                                    <a href="#" data-bs-toggle="dropdown"
+                                                        class="btn btn-light rounded btn-sm font-sm"> <i
+                                                            class="material-icons md-more_horiz"></i> </a>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item"
+                                                              href="/admin/editpage?id=<%= productData[i]._id %>">Edit
+                                                            info</a>    
+                                                            <a class="dropdown-item"
+                                                            href="/admin/viewProductPage?id=<%= productData[i]._id %>">View
+                                                          info</a>  
+                                                                                                   
+                                                        <% if (productData[i].isListed==true) { %>  
+                                                            <a class="dropdown-item text-danger"
+                                                                href="/admin/unlistProduct?id=<%= productData[i]._id %>">
+                                                                unlist </a>
+                                                            <% } else { %>
+                                                                <a class="dropdown-item text-success"
+                                                                    href="/admin/listProduct?id=<%= productData[i]._id %>">
+                                                                    list </a>
+                                                                <% }%>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <% } %>
+
+                                </tbody>
+                            </table> <!-- table-responsive.// -->
+                        </div>
+                    </div> <!-- card-body end// -->
+                </div> <!-- card end// -->
+                
+            </section> <!-- content-main end// -->
+
+            <%- include ('../layouts/adminfooter.ejs') %>

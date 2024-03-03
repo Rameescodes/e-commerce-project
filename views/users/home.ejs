@@ -1,0 +1,135 @@
+<%- include ('../layouts/header.ejs') %>
+
+<main class="main">       
+    <section class="home-slider position-relative pt-50">
+        <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
+            <% for(let i=0;i<banData.length;i++){%>
+            <div class="single-hero-slider single-animation-wrap">
+                <div class="container">
+                    <div class="row align-items-center slider-animated-1">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="hero-slider-content-2">
+                                <h4 class="animated"><%= banData[i].subtitle %></h4>
+                                <h2 class="animated fw-900"><%= banData[i].title %></h2>
+                                <p class="animated"><%= banData[i].description %></p>
+                                <!-- <a class="animated btn btn-brush btn-brush-3" href="shop-product-right.html"> Shop
+                                    Now </a> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="single-slider-img single-slider-img-1">
+                                <img class="animated slider-1-1" src="/bannerImages/<%= banData[i].image %>" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <div class="slider-arrow hero-slider-1-arrow"></div>
+    </section>
+        
+       <section class="product-tabs section-padding position-relative wow fadeIn animated">
+            <div class="bg-square"></div>
+            <div class="container">
+                <div class="tab-header">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
+                        </li>
+                    </ul>
+                    </div>
+                <!--End nav-tabs-->
+                <div class="tab-content wow fadeIn animated" id="myTabContent">
+                    <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
+                        <div class="row product-grid-4">
+                            <% for (let i=0; i < productData.length; i++) { %>
+                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="">
+                                                <img class="default-img" src="/productImages/<%=productData[i].image %>" alt="">
+                                                <!-- <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt=""> -->
+                                            </a>
+                                        </div>  
+                                       
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            <span class="hot">Hot</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+
+                                        <h2><a href="/productPage?id=<%= productData[i]._id %>"><%= productData[i].name %></a></h2>
+                                        <div class="rating-result" title="90%">
+                                            
+                                        </div>
+                                        <div class="product-price">
+                                            <span><%=productData[i].price%></span>
+                                               <span class="old-price"> </span>
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="/cartlist"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         <%}%>                                               
+                    </div>                
+                <!--End tab-content-->
+            </div>
+        </section>       
+        <section class="banners mb-15">
+            <div class="container">
+               
+            </div>
+        </section>
+        <section class="section-padding">
+            <h3 class="section-title mb-20"><span>New</span> Arrivals</h3>
+            <div class="carausel-6-columns carausel" id="carausel-6-columns-2">
+                <% for (let i = 0; i < categoryData.length; i++) { %>
+                    <div class="product-card">
+                        <div class="product-img-action-wrap">
+                            <div class="product-img product-img-zoom">
+                                <a href="shop-product-right.html">
+                                    <img class="default-img" src="/categoryImages/<%=categoryData[i].Image %>" alt="">
+                                    <img class="hover-img" src="" alt="">
+                                </a>
+                            </div>
+                            <div class="product-action-1">
+                                
+                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="/wishlist" tabindex="0">
+                                    <i class="fi-rs-heart"></i>
+                                </a>
+                                
+                            </div>                           
+                        </div>
+                        <div class="category-content-wrap">
+                            <h4><a href="shop-category-right.html"><%=categoryData[i].category%></a></h4>
+                            <div class="rating-result" title="90%">
+                                <span></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+        
+        </section>
+        
+        <section class="section-padding">
+           
+        </section>
+        
+       
+        
+    </main>
+<%- include ('../layouts/footer.ejs') %>
+   

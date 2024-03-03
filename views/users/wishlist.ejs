@@ -1,0 +1,82 @@
+<%- include("../layouts/header") %>
+
+<body>
+    <!-- Your mobile header and other content -->
+
+    <main class="main">
+      
+
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <% if (Wishlist.length > 0) { %>
+                                <table class="table shopping-summery text-center">
+                                    <thead>
+                                        <tr class="main-heading">
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for (let i = 0; i < Wishlist.length; i++) { %>
+                                            <tr>
+                                                <% if (Wishlist[i].product && Wishlist[i].product.image) { %>
+                                                    <td class="image product-thumbnail">
+                                                        <img src="/productImages/<%= Wishlist[i].product.image %>" alt="<%= Wishlist[i].product.name %>">
+                                                    </td>
+                                                    <td class="product-des product-name">
+                                                        <h5 class="product-name">
+                                                            <a href="/productPage?id=<%= Wishlist[i].product._id %>">
+                                                                <%= Wishlist[i].product.name %>
+                                                            </a>
+                                                        </h5>
+                                                    </td>
+                                                    <td class="product-des product-price">
+                                                        <h5 class="product-price">
+                                                            <a href="/productPage?id=<%= Wishlist[i].product._id %>">
+                                                                <%= Wishlist[i].product.price %>
+                                                            </a>
+                                                        </h5>
+                                                    </td>
+                                                     <td class="text-right" data-title="Cart">
+                                                <form action="/productPage?id=<%= Wishlist[i]._id %>"
+                                                    method="post">
+                                                    <input type="hidden" value="<%= Wishlist[i]._id %>">
+                                                    <div class="product-details-quantity">
+                                                        <input type="number" id="qty" name="qty" class="form-control"
+                                                            value="1" min="1" max="10" step="1" data-decimals="0"
+                                                            hidden>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-sm"><i
+                                                            class="fi-rs-shopping-bag mr-5"></i>Add to cart</button>
+                                                </form>
+                                            </td>
+                                            <td class="action" data-title="Remove"><a
+                                                href="/removeFromWishlist?productId=<%= Wishlist[i].product._id %>"><i
+                                                    class="fi-rs-trash"></i></a></td>
+                                                <% } %>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            <% } else { %>
+                                <!-- Your empty wishlist message and continue shopping link -->
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Your preloader and footer includes -->
+
+</body>
+
+<%- include("../layouts/footer") %>
+</html>

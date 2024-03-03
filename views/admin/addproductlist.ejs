@@ -1,0 +1,134 @@
+<%- include("../layouts/adminheader") %>
+
+
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+
+<body>
+    <form action="/admin/addproductlist" method="post" enctype="multipart/form-data" id="form">
+        <section class="content-main">
+            <div class="row">
+                <div class="col-6">
+                    <div class="content-header">
+                        <h2 class="content-title">Add New Product</h2>
+                        <% if(typeof message !=='undefined') {%>
+                        <p style="color:rgb(255,0,0);"> 
+                        <%= message %>
+                        </p>
+                    
+                        <% } %>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                           
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>1. General info</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">
+                                        <label class="form-label">Product title</label>
+                                        <input name="name" type="text" placeholder="Type here" class="form-control">
+                                        <div class="error message" style="color:red" id="title-error"></div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="description" placeholder="Type here" class="form-control" rows="4"></textarea>
+                                        <div class="error message" style="color:red" id="Description-error"></div>
+
+                                    </div>
+                                       
+                                    <div class="mb-4">
+                                        <label class="form-label">Quantity</label>
+                                        <textarea name="quantity" placeholder="Type here" class="form-control" rows="4"></textarea>
+                                        <div class="error message" style="color:red" id="quantity-error"></div>
+
+                                    </div>
+                                    <div class="mb-5">
+                                        <label class="form-label" for="brandSelect">Brand name</label>
+                                        <div class="error message" style="color:red" id="errorShow"></div>
+                                        <select class="form-select" id="brandSelect" name="Brandname">
+                                            <option>Adidas</option>
+                                            <option>Nike</option>
+                                            <option>Puma</option>
+                                            <option>Rebok</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <hr class="mb-4 mt-0">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>2. Pricing</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">  
+                                        <label class="form-label">Price</label>
+                                        <input name="price"type="text" placeholder="$00.0" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <hr class="mb-4 mt-0">
+                            <div class="row">
+                             
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>3. Category</h6>
+                                    </div>
+                                            <div class="col-md-9">
+                                                <div class="mb-4">
+                                                    <% if(Category) if(Category.length>0){
+                                                        for(let i=0;i<Category.length;i++){ %>
+                                                            <label class="mb-2 form-check form-check-inline"
+                                                                style="width: 45%;">
+                                                                <input class="form-check-input" name="category"
+                                                                    id="category" type="radio"
+                                                                    value="<%= Category[i]._id %>">
+                                                                <span class="form-check-label">
+                                                                    <%= Category[i].category %>
+                                                                </span>
+                                                            </label>
+                                                            <% } }%>
+                                                </div>
+                                            </div> <!-- col.// -->  
+                                </div> <!-- row.// -->
+                            <hr class="mb-4 mt-0">
+                            <div class="row">           
+                                <div class="col-md-3">
+                                    <h6>4. Product Images</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">   
+                                        <div class="images-container"></div>                                         
+                                        <label class="form-label">Images</label>
+                                        <input class="form-control" required class="form-control" type="file" name="image">
+                                    </div>
+                                </div> <!-- col.// -->
+                                   <div class="col-md-3">
+                                   <h6 style="text-align:end"> <button type="submit">submit</button></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section> <!-- content-main end// -->
+    </form>    
+ </body>
+
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+</html>
+
+<%- include("../layouts/adminfooter") %>

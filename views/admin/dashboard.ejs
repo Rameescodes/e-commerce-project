@@ -20,13 +20,8 @@
                             <article class="icontext">
                                 <span class="icon icon-sm rounded-circle bg-primary-light"><i
                                         class="text-primary material-icons md-monetization_on"></i></span>
-                                <div class="text">
-                                    <h6 class="mb-1 card-title">Revenue</h6>
-                                    <span>$<%= totalRevenue %></span>
-                                    <span class="text-sm">
-                                        Total Revenue.
-                                    </span>
-                                </div>
+                                       
+                                        
                             </article>
                         </div>
                     </div>
@@ -37,12 +32,12 @@
                                         class="text-success material-icons md-local_shipping"></i></span>
                                 <div class="text">
                                     <h6 class="mb-1 card-title">Orders</h6> <span>
-                                        <%= totalOrders %>
+                                        <%= total %>
                                     </span>
                                     <span class="text-sm">
                                         Total number of orders.
                                     </span>
-                                </div>
+                                </div>      
                             </article>
                         </div>
                     </div>
@@ -169,13 +164,13 @@
                                         </thead>
                                         <tbody>
     
-                                            <% Orders.forEach((order)=> { %>
+                                            <% orders.forEach((order)=> { %>
                                                 <tr>
                                                     <td>
                                                         <%= order._id %>
                                                     </td>
                                                     <td>
-                                                        <%= order.user.name %>
+                                                        <%= order.name %>
                                                     </td>
                                                     <td>
                                                         <%= new Date(order.orderDate).toLocaleDateString() %>

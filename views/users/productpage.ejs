@@ -72,7 +72,7 @@
                                         <!-- MAIN SLIDES -->
                                         <div class="product-image-slider">                                            
                                                 <figure class="border-radius-10">
-                                                    <img src="productImages/<%=productData.image%>" alt="product image"style="width: 100%; object-fit: cover;">
+                                                    <img src="productImages/<%=productData?.image%>" alt="product image"style="width: 100%; object-fit: cover;">
                                                 </figure>
                                         </div>
                                       
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-info">
-                                        <h2 class="title-detail"><%= productData.name %></h2>
+                                        <h2 class="title-detail"><%= productData?.name %></h2>
                                         <div class="product-detail-rating">
                                             <div class="pro-details-brand">
                                                 <span> Category: <a href="shop-grid-right.html"> <%= productData.category.category %></a></span>

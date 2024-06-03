@@ -62,6 +62,19 @@ const loadHome =async(req,res)=>{
         console.log(error.message);
     }
 }
+
+const home = async (req,res)=> {
+  try{
+    const banData = await Banner.find({isListed:true});
+    const categoryData = await category.find({})
+    const productData = await productModels.find({}).limit(10)
+
+    res.render('home', {session:req.session,productData,categoryData,banData});
+  } catch {
+    console.log(error)
+  }
+}
+
 //===== signup  ===========================
 
 const signUp=async(req,res)=>{
@@ -316,8 +329,7 @@ const contact = async(req,res)=>{
   } catch (error) {
     console.log(error)
   }
-}
-
+};
 
 
 
@@ -350,6 +362,7 @@ const unblockUser=async(req,res) => {
     }
 }
 
+
 const blockUser = async(req,res) => {
     try {
         const Id=req.query.id
@@ -370,5 +383,5 @@ module.exports={
     sentOtp,validateOtp,validateLogin,
     logout,profile,loadUsers,
     unblockUser,
-    blockUser,loadWallet,contact,register,verifyOtp
+    blockUser,loadWallet,contact,register,verifyOtp,home
 }

@@ -39,25 +39,26 @@ const pdfController = require("../controllers/pdfController")
 
 
 user_route.get('/',userController.loadHome)
-user_route.get('/register',auth.isLogout,userController.register)
+user_route.get('/register',userController.register)
 
-user_route.get('/login',auth.isLogout,userController.loadLogin)
-user_route.get('/logout',auth.isLogout,userController.logout)
-user_route.get('/signup',auth.isLogout,userController.signUp)
-user_route.get('/profile',auth.isLogout,userController.profile)
+user_route.get('/login',userController.loadLogin)
+user_route.get('/logout',userController.logout)
+user_route.get('/signup',userController.signUp)
+user_route.get('/profile',userController.profile)
 
-user_route.get('/wallet',auth.isLogout,userController.loadWallet)
+user_route.get('/wallet',userController.loadWallet) 
+user_route.get('/home',userController.home)
 
 
 
 //product=============================================  
-user_route.get('/shop',auth.isLogout,productController.shop)
-user_route.get('/productpage',auth.isLogout,productController.productpage)
+user_route.get('/shop',productController.shop)
+user_route.get('/productpage',productController.productpage)
 
 
 //wishlist=========================================================
-user_route.get('/wishlist',auth.isLogout,wishlistController.loadWishlist)                                         
-user_route.get('/addWishlist',auth.isLogout,wishlistController.addTowishlist)
+user_route.get('/wishlist',wishlistController.loadWishlist)                                         
+user_route.get('/addWishlist',wishlistController.addToWishlist)
 user_route.get('/removeFromWishlist',wishlistController.removeFromWishlist)
 
 //cartController====================================================

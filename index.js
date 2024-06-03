@@ -1,5 +1,6 @@
 const mongoose=require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/world_of_shoes");
+// mongoose.connect("mongodb://127.0.0.1:27017/world_of_shoes");
+mongoose.connect("mongodb+srv://muhammedrameess89:muhammedrameess89@traversycluster.m3dpb7q.mongodb.net/world_of_shoes");
 
 
 const express=require("express");
@@ -37,7 +38,3 @@ app.listen(3000,function(){
     console.log("server is running...");
 });
   
-
-
-
-

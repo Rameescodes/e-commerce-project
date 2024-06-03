@@ -45,7 +45,7 @@ const shop = async (req, res) => {
             category: req.body.category || req.query.category || [],
         };
 
-        res.render('productlist', { products: productData, category, currentPage, selectedFilters });
+        res.render('productpage', {  productData, category, currentPage, selectedFilters });
    
     } catch (error) {
         console.log(error);
@@ -57,9 +57,12 @@ const shop = async (req, res) => {
 
 const productpage = async (req,res) => {    
     try {
+        console.log("productData")
         const id = req.query.id;
         const relatedProducts = await product.find({ _id: { $ne: id } }).populate('category').limit(4)
+
         const productData = await product.findOne({_id:id}).populate('category')
+       
         res.render('productpage',{productData,relatedProducts})
     } catch(error) {
         console.log(error.message)
@@ -268,4 +271,3 @@ const viewProductPage = async(req,res) => {
     productpage
 
    }    
-

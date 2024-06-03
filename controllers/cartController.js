@@ -16,9 +16,7 @@
     let producttotal = 0;
 
     for (const cartitems of cartData) {
-        // Check if cartitems.product and cartitems.product.price are defined
         if (cartitems.product && cartitems.product.price) {
-            // Check if cartitems.quantity is defined
             const quantity = cartitems.quantity || 0;
             const total = cartitems.product.price * quantity;
             producttotal += total;

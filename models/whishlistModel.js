@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const { stringAt } = require('pdfkit/js/data');
 
 const wishlistitemsschema = new mongoose.Schema({
 product:{
@@ -16,7 +17,8 @@ const wishlistSchema = new mongoose.Schema({
     date: {
         type: Date,
         default:Date.now
-    }
+    },
+   
 
 });
 
